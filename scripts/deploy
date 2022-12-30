@@ -1,0 +1,7 @@
+#!/bin/sh
+VERSION=`git rev-list --count HEAD`
+ssh bingecraft -- rm mezzanine/mods/wannabe-\*.jar
+if scp build/libs/wannabe-$VERSION.jar bingecraft:mezzanine/mods ; then
+  ssh bingecraft -- systemctl --user restart mezzanine
+  ssh bingecraft -- tail --follow=name mezzanine/logs/latest.log
+fi

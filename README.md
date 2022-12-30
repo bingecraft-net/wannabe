@@ -1,4 +1,5 @@
-# Fabric Example Mod
+# wannabe
+A Fabric mod for experimentation and ripoffs
 
 ## Setup
 

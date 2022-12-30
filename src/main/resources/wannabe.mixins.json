@@ -6,7 +6,7 @@
   "mixins": [
   ],
   "client": [
-    "ExampleMixin"
+    "net.bingecraft.wannabe.mixin.ExampleMixin"
   ],
   "injectors": {
     "defaultRequire": 1
