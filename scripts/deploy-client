@@ -1,0 +1,4 @@
+#!/bin/sh
+VERSION=`git rev-list --count HEAD`
+rm /home/arctair/.local/share/PrismLauncher/instances/fabric-1.19.3-0.14.12/.minecraft/mods/wannabe-*.jar
+cp build/libs/wannabe-$VERSION.jar /home/arctair/.local/share/PrismLauncher/instances/fabric-1.19.3-0.14.12/.minecraft/mods
