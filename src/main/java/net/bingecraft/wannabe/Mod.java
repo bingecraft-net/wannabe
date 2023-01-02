@@ -16,15 +16,21 @@ import org.slf4j.LoggerFactory;
 public class Mod implements ModInitializer {
   public static final Logger LOGGER = LoggerFactory.getLogger("net-bingecraft-wannabe");
   public static final String NAMESPACE = "wannabe";
-  public static final Item ingot = new Item(new FabricItemSettings());
-  public static final Block ingotSource = new IngotSource(FabricBlockSettings.of(Material.METAL).strength(0.5f));
-  public static final Item ingotSourceItem = new BlockItem(ingotSource, new FabricItemSettings());
+
+  public static final class Items {
+    public static final Item INGOT = new Item(new FabricItemSettings());
+    public static final Item INGOT_SOURCE = new BlockItem(Blocks.INGOT_SOURCE, new FabricItemSettings());
+  }
+
+  public static final class Blocks {
+    public static final Block INGOT_SOURCE = new IngotSource(FabricBlockSettings.of(Material.METAL).strength(0.5f));
+  }
 
   @Override
   public void onInitialize() {
-    Registry.register(Registries.ITEM, new Identifier(NAMESPACE, "ingot"), ingot);
-    Registry.register(Registries.BLOCK, new Identifier(NAMESPACE, "ingot_source"), ingotSource);
-    Registry.register(Registries.ITEM, new Identifier(NAMESPACE, "ingot_source"), ingotSourceItem);
+    Registry.register(Registries.ITEM, new Identifier(NAMESPACE, "ingot"), Items.INGOT);
+    Registry.register(Registries.BLOCK, new Identifier(NAMESPACE, "ingot_source"), Blocks.INGOT_SOURCE);
+    Registry.register(Registries.ITEM, new Identifier(NAMESPACE, "ingot_source"), Items.INGOT_SOURCE);
     LOGGER.info("Initialized Wannabe");
   }
 }

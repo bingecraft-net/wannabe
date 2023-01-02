@@ -18,7 +18,7 @@ public class IngotSource extends Block {
   @Override
   public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
     if (!world.isClient) {
-      player.giveItemStack(new ItemStack(Mod.ingot));
+      player.giveItemStack(new ItemStack(Mod.Items.INGOT));
     }
     return ActionResult.SUCCESS;
   }
