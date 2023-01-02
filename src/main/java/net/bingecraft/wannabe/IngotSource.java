@@ -3,7 +3,7 @@ package net.bingecraft.wannabe;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.text.Text;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
@@ -18,7 +18,7 @@ public class IngotSource extends Block {
   @Override
   public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
     if (!world.isClient) {
-      player.sendMessage(Text.of("Wannabe Ingot Source"), false);
+      player.giveItemStack(new ItemStack(Mod.ingot));
     }
     return ActionResult.SUCCESS;
   }
