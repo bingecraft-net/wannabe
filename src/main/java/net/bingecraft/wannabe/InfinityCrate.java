@@ -18,8 +18,8 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class IngotSource extends Block {
-  public IngotSource(Settings settings) {
+public class InfinityCrate extends Block {
+  public InfinityCrate(Settings settings) {
     super(settings);
   }
 
@@ -41,7 +41,7 @@ public class IngotSource extends Block {
 
   public static class GuiDescription extends io.github.cottonmc.cotton.gui.SyncedGuiDescription {
     public GuiDescription(int syncId, PlayerInventory playerInventory) {
-      super(Mod.ScreenHandlers.INGOT_SOURCE, syncId, playerInventory);
+      super(Mod.ScreenHandlers.INFINITY_CRATE, syncId, playerInventory);
 
       WGridPanel wGridPanel = new WGridPanel();
       setRootPanel(wGridPanel);

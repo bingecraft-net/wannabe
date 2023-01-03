@@ -20,23 +20,22 @@ public class Mod implements ModInitializer {
 
   public static final class Items {
     public static final Item INGOT = new Item(new FabricItemSettings());
-    public static final Item INGOT_SOURCE = new BlockItem(Blocks.INGOT_SOURCE, new FabricItemSettings());
+    public static final Item INFINITY_CRATE = new BlockItem(Blocks.INFINITY_CRATE, new FabricItemSettings());
   }
 
   public static final class Blocks {
-    public static final Block INGOT_SOURCE = new IngotSource(FabricBlockSettings.of(Material.METAL).strength(0.5f));
+    public static final Block INFINITY_CRATE = new InfinityCrate(FabricBlockSettings.of(Material.METAL).strength(0.5f));
   }
 
   public static class ScreenHandlers {
-    public static final ScreenHandlerType<IngotSource.GuiDescription> INGOT_SOURCE = new ScreenHandlerType<>(IngotSource.GuiDescription::new);
+    public static final ScreenHandlerType<InfinityCrate.GuiDescription> INFINITY_CRATE = new ScreenHandlerType<>(InfinityCrate.GuiDescription::new);
   }
 
   @Override
   public void onInitialize() {
     Registry.register(Registries.ITEM, new Identifier(NAMESPACE, "ingot"), Items.INGOT);
-    Registry.register(Registries.BLOCK, new Identifier(NAMESPACE, "ingot_source"), Blocks.INGOT_SOURCE);
-    Registry.register(Registries.ITEM, new Identifier(NAMESPACE, "ingot_source"), Items.INGOT_SOURCE);
-    Registry.register(Registries.SCREEN_HANDLER, new Identifier(NAMESPACE, "ingot_source"), ScreenHandlers.INGOT_SOURCE);
-    LOGGER.info("Initialized Wannabe");
+    Registry.register(Registries.BLOCK, new Identifier(NAMESPACE, "infinity_crate"), Blocks.INFINITY_CRATE);
+    Registry.register(Registries.ITEM, new Identifier(NAMESPACE, "infinity_crate"), Items.INFINITY_CRATE);
+    Registry.register(Registries.SCREEN_HANDLER, new Identifier(NAMESPACE, "infinity_crate"), ScreenHandlers.INFINITY_CRATE);
   }
 }
