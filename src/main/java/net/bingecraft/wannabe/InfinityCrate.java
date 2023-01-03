@@ -6,8 +6,10 @@ import io.github.cottonmc.cotton.gui.widget.WItemSlot;
 import io.github.cottonmc.cotton.gui.widget.data.Insets;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.InventoryProvider;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.SidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.SimpleNamedScreenHandlerFactory;
@@ -17,8 +19,9 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
 
-public class InfinityCrate extends Block {
+public class InfinityCrate extends Block implements InventoryProvider {
   public InfinityCrate(Settings settings) {
     super(settings);
   }
@@ -39,6 +42,13 @@ public class InfinityCrate extends Block {
     );
   }
 
+  private static final PermissiveSidedInventory inventory = InfiniteInventory.of(new ItemStack(Mod.Items.INGOT, 64));
+
+  @Override
+  public SidedInventory getInventory(BlockState state, WorldAccess world, BlockPos pos) {
+    return inventory;
+  }
+
   public static class GuiDescription extends io.github.cottonmc.cotton.gui.SyncedGuiDescription {
     public GuiDescription(int syncId, PlayerInventory playerInventory) {
       super(Mod.ScreenHandlers.INFINITY_CRATE, syncId, playerInventory);
@@ -47,7 +57,7 @@ public class InfinityCrate extends Block {
       setRootPanel(wGridPanel);
       wGridPanel.setInsets(Insets.ROOT_PANEL);
 
-      WItemSlot wItemSlot = WItemSlot.of(InfiniteInventory.of(new ItemStack(Mod.Items.INGOT, 64)), 0);
+      WItemSlot wItemSlot = WItemSlot.of(inventory, 0);
       wGridPanel.add(wItemSlot, 4, 1);
 
       wGridPanel.add(createPlayerInventoryPanel(), 0, 3);
