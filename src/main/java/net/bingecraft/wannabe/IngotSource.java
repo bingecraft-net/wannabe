@@ -8,8 +8,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.Inventory;
-import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.SimpleNamedScreenHandlerFactory;
@@ -49,8 +47,7 @@ public class IngotSource extends Block {
       setRootPanel(wGridPanel);
       wGridPanel.setInsets(Insets.ROOT_PANEL);
 
-      Inventory inventory = new SimpleInventory(new ItemStack(Mod.Items.INGOT, 64));
-      WItemSlot wItemSlot = WItemSlot.of(inventory, 0);
+      WItemSlot wItemSlot = WItemSlot.of(InfiniteInventory.of(new ItemStack(Mod.Items.INGOT, 64)), 0);
       wGridPanel.add(wItemSlot, 4, 1);
 
       wGridPanel.add(createPlayerInventoryPanel(), 0, 3);
