@@ -17,6 +17,9 @@
   "entrypoints": {
     "main": [
       "net.bingecraft.wannabe.Mod"
+    ],
+    "client": [
+      "net.bingecraft.wannabe.ClientMod"
     ]
   },
   "mixins": [
