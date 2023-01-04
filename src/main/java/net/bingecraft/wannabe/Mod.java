@@ -27,7 +27,7 @@ public class Mod implements ModInitializer {
     public static final Block INFINITY_CRATE = new InfinityCrate(FabricBlockSettings.of(Material.METAL).strength(0.5f));
   }
 
-  public static class ScreenHandlers {
+  public static class ScreenHandlerTypes {
     public static final ScreenHandlerType<InfinityCrate.GuiDescription> INFINITY_CRATE = new ScreenHandlerType<>(InfinityCrate.GuiDescription::new);
   }
 
@@ -36,6 +36,6 @@ public class Mod implements ModInitializer {
     Registry.register(Registries.ITEM, new Identifier(NAMESPACE, "ingot"), Items.INGOT);
     Registry.register(Registries.BLOCK, new Identifier(NAMESPACE, "infinity_crate"), Blocks.INFINITY_CRATE);
     Registry.register(Registries.ITEM, new Identifier(NAMESPACE, "infinity_crate"), Items.INFINITY_CRATE);
-    Registry.register(Registries.SCREEN_HANDLER, new Identifier(NAMESPACE, "infinity_crate"), ScreenHandlers.INFINITY_CRATE);
+    Registry.register(Registries.SCREEN_HANDLER, new Identifier(NAMESPACE, "infinity_crate"), ScreenHandlerTypes.INFINITY_CRATE);
   }
 }

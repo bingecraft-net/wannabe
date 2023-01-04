@@ -51,7 +51,7 @@ public class InfinityCrate extends Block implements InventoryProvider {
 
   public static class GuiDescription extends io.github.cottonmc.cotton.gui.SyncedGuiDescription {
     public GuiDescription(int syncId, PlayerInventory playerInventory) {
-      super(Mod.ScreenHandlers.INFINITY_CRATE, syncId, playerInventory);
+      super(Mod.ScreenHandlerTypes.INFINITY_CRATE, syncId, playerInventory);
 
       WGridPanel wGridPanel = new WGridPanel();
       setRootPanel(wGridPanel);
