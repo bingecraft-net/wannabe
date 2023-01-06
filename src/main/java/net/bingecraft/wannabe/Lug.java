@@ -77,16 +77,17 @@ public class Lug extends BlockWithEntity {
     public LugGuiDescription(int syncId, PlayerInventory playerInventory, ScreenHandlerContext context) {
       super(Mod.ScreenHandlerTypes.LUG_GUI_DESCRIPTION, syncId, playerInventory, getBlockInventory(context, SIZE), getBlockPropertyDelegate(context));
 
-      WGridPanel root = new WGridPanel();
+      WGridPanel root = createRootPanel();
       setRootPanel(root);
-      root.setInsets(Insets.ROOT_PANEL);
-
-      WItemSlot itemSlot = WItemSlot.of(blockInventory, 0, 9, 1);
-      root.add(itemSlot, 0, 1);
-
-      root.add(this.createPlayerInventoryPanel(), 0, 3);
-
       root.validate(this);
+    }
+
+    private WGridPanel createRootPanel() {
+      WGridPanel root = new WGridPanel();
+      root.setInsets(Insets.ROOT_PANEL);
+      root.add(WItemSlot.of(blockInventory, 0, SIZE, 1), 0, 1);
+      root.add(this.createPlayerInventoryPanel(), 0, 3);
+      return root;
     }
   }
 
