@@ -11,6 +11,10 @@ class PermissiveSidedInventory extends SimpleInventory implements SidedInventory
     super(itemStack);
   }
 
+  public PermissiveSidedInventory(int size) {
+    super(size);
+  }
+
   @Override
   public int[] getAvailableSlots(Direction side) {
     int[] slots = new int[size()];

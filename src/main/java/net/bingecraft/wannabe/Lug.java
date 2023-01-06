@@ -13,7 +13,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.SidedInventory;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.screen.SimpleNamedScreenHandlerFactory;
@@ -26,6 +25,8 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 
 public class Lug extends BlockWithEntity {
+  private static final int SIZE = 9;
+
   protected Lug(Settings settings) {
     super(settings);
   }
@@ -36,7 +37,7 @@ public class Lug extends BlockWithEntity {
   }
 
   public static class LugBlockEntity extends BlockEntity implements InventoryProvider {
-    private final PermissiveSidedInventory inventory = new PermissiveSidedInventory(ItemStack.EMPTY);
+    private final PermissiveSidedInventory inventory = new PermissiveSidedInventory(SIZE);
 
     public LugBlockEntity(BlockPos pos, BlockState state) {
       super(Mod.BlockEntityTypes.LUG, pos, state);
@@ -73,18 +74,15 @@ public class Lug extends BlockWithEntity {
   }
 
   public static class LugGuiDescription extends SyncedGuiDescription {
-    private static final int INVENTORY_SIZE = 1;
-
     public LugGuiDescription(int syncId, PlayerInventory playerInventory, ScreenHandlerContext context) {
-      super(Mod.ScreenHandlerTypes.LUG_GUI_DESCRIPTION, syncId, playerInventory, getBlockInventory(context, INVENTORY_SIZE), getBlockPropertyDelegate(context));
+      super(Mod.ScreenHandlerTypes.LUG_GUI_DESCRIPTION, syncId, playerInventory, getBlockInventory(context, SIZE), getBlockPropertyDelegate(context));
 
       WGridPanel root = new WGridPanel();
       setRootPanel(root);
-      root.setSize(300, 200);
       root.setInsets(Insets.ROOT_PANEL);
 
-      WItemSlot itemSlot = WItemSlot.of(blockInventory, 0);
-      root.add(itemSlot, 4, 1);
+      WItemSlot itemSlot = WItemSlot.of(blockInventory, 0, 9, 1);
+      root.add(itemSlot, 0, 1);
 
       root.add(this.createPlayerInventoryPanel(), 0, 3);
 
